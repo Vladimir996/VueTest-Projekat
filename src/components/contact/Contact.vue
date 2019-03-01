@@ -14,7 +14,8 @@
                     
                             <input type="text" name="tekst" placeholder="Name" class="input-field" >
                              <br>
-                            <input type="email" name="email" placeholder="Email Address" class="input-field">
+                            <input type="email" id="email" @blur="$v.email.$touch()" :class="{invalid: $v.email.$error}" name="email" placeholder="Email Address" class="input-field">
+                            <p v-if="!$v.email.email">Please provide a valide email address</p>
                              <br>
                             <input type="text" name="subject" placeholder="Subject" class="input-field">
                              <br>
@@ -55,7 +56,16 @@
          </div>
 </template>
 <script>
+import { required, email } from 'vuelidate/lib/validators'
 export default {
+  
+  validations: {
+    email: {
+     required: required,
+     email: email
+    }
+  
+  },
     
 }
 </script>
@@ -107,7 +117,7 @@ export default {
     height: 221px;
     border: 2px solid #8a8888;
     margin-bottom: 10px;
-  }
+  } 
   .btn-contact {
     width: 140px;
     height: 40px;
