@@ -8,7 +8,6 @@ import Vuelidate from 'vuelidate'
 Vue.use(VueRouter);
 Vue.use(VModal);
 Vue.use(Vuelidate);
-
 const router = new VueRouter({
   mode: 'history',
   routes

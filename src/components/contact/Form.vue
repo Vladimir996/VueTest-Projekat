@@ -21,7 +21,7 @@
                             <br>
                             <div class="form-btns">
                             <button type="button" name="send" class="btn-contact">SEND MESSAGE</button>
-                            <vue-recaptcha sitekey="6LfSWZUUAAAAAMCEFsHkYtjrGOYXWnRSK3i9b_st"></vue-recaptcha>
+                            <vue-recaptcha sitekey="6LdKW5UUAAAAAC6foMBDpclZplysFeqhSy5GldXT" @verify="onVerify"></vue-recaptcha>
                             </div>
          </div>
     </div>
@@ -107,5 +107,10 @@ export default {
     background-color: rgb(45,204,114); 
     color: white;
     margin-bottom: 20px;
+    margin-right: 120px;
   }
+  .form-btns{
+      display: flex;
+  }
+
 </style>
