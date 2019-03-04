@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div >
          <div class="form-contact">
                     <h3>CONTACT FORM</h3>
                     <p>Proin pharetra volutpat quam, nec malesuada elit lobortis id. Curabitur mauris sem, scelerisque et sem et, auctor lobortis felis.</p>
@@ -14,26 +14,30 @@
                             </div>
                             <input type="text" name="subject" placeholder="Subject" class="input-field">
                              <br>
-                             <!-- <div class="input" :class="{ invalid: $v.textarea.$error }"> -->
+                             <div class="input" :class="{ invalid: $v.textarea.$error }">
                             <textarea class="input-text" rows="10" maxlength="500" @input="$v.textarea.$touch()" v-model="textarea" ></textarea>
-                            <!-- </div> -->
+                            <p id="text-area" v-if="$v.textarea.$error">Error!</p>
+                            </div>
                             <br>
+                            <div class="form-btns">
                             <button type="button" name="send" class="btn-contact">SEND MESSAGE</button>
+                            <vue-recaptcha sitekey="6LfSWZUUAAAAAMCEFsHkYtjrGOYXWnRSK3i9b_st"></vue-recaptcha>
+                            </div>
          </div>
     </div>
 </template>
 
 <script>
-import { required, email, minLength, maxLength } from 'vuelidate/lib/validators'
-
+import { required, email, minLength, maxLength } from 'vuelidate/lib/validators';
+ import VueRecaptcha from 'vue-recaptcha';
 export default {
     name: 'Form',
+    components: { VueRecaptcha },
     data() {
      return {
          email: '',
          name: '',
-         minLength:5,
-         maxLength:10
+         textarea:''
         
      }
     },
@@ -46,18 +50,16 @@ export default {
             required,
             name
         },
-        // textarea: {
-        //     required,
-        //     textarea
-        // }
+        textarea: {
+           maxLength: maxLength(10),
+           minLength: minLength(3),
+           required
+        }
     },
-}
+};
 </script>
 
 <style>
-.container {
-    height: 620px;
-}
   .form-contact h3{
     color: #8a8888;
     width: 190px;
@@ -85,6 +87,11 @@ export default {
   .input.invalid p {
       color: red;
       height: 10px;
+      margin-bottom: 30px;
+  }
+  #text-area{
+      margin-top: -15px;
+      margin-bottom: 10px;
   }
   .input-text {
     width: 560px;
@@ -99,5 +106,6 @@ export default {
     border: none;
     background-color: rgb(45,204,114); 
     color: white;
+    margin-bottom: 20px;
   }
 </style>

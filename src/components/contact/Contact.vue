@@ -9,7 +9,6 @@
              <div class="container">
                <div class="container-contact">
                <Form/>
-                <div class="contact">
                     <div class="heder-info">
                             <h4>CONTACT INFO</h4>
                             <p>Lorem ipsum dolor sit amet, consectetur elit. Cras <br> tortor neque,ante in,
@@ -35,7 +34,6 @@
                                     <p>9am - 5pm</p>
                                     <p>Closed</p>
                             </div>
-                    </div>
                 </div>
                </div>
              </div> 
@@ -51,8 +49,7 @@ export default {
 </script>
 <style>
 .container-contact{
-  width: 970px;
-  height: 600px;
+  display: flex;
 }
 .question {
     background-color: #2ecc71;
@@ -67,9 +64,8 @@ export default {
     font-weight: 500;
     font-size: 28px;
   }
-  .contact{
-    margin-left: 670px;
-    margin-top: -600px;
+  .heder-info {
+    margin-left: 130px;
   }
   .heder-info h4{
     width: 181px;
