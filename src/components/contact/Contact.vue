@@ -8,21 +8,7 @@
              <div style="width: 100%"><iframe width="100%" height="485" src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=Romanovih%2033+(My%20Business%20Name)&amp;ie=UTF8&amp;t=&amp;z=15&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div><br />
              <div class="container">
                <div class="container-contact">
-                <div class="form">
-                    <h3>CONTACT FORM</h3>
-                    <p>Proin pharetra volutpat quam, nec malesuada elit lobortis id. Curabitur mauris sem, scelerisque et sem et, auctor lobortis felis.</p>
-                    
-                            <input type="text" name="tekst" placeholder="Name" class="input-field" >
-                             <br>
-                            <input type="email" id="email" @blur="$v.email.$touch()" :class="{invalid: $v.email.$error}" name="email" placeholder="Email Address" class="input-field">
-                            <p v-if="!$v.email.email">Please provide a valide email address</p>
-                             <br>
-                            <input type="text" name="subject" placeholder="Subject" class="input-field">
-                             <br>
-                            <textarea class="input-text" rows="10"  ></textarea>
-                             <br>
-                            <button type="button" name="send" class="btn-contact">SEND MESSAGE</button>
-                 </div>
+               <Form/>
                 <div class="contact">
                     <div class="heder-info">
                             <h4>CONTACT INFO</h4>
@@ -56,17 +42,11 @@
          </div>
 </template>
 <script>
-import { required, email } from 'vuelidate/lib/validators'
+import Form from "./Form.vue";
 export default {
-  
-  validations: {
-    email: {
-     required: required,
-     email: email
-    }
-  
-  },
-    
+ components: {
+    Form
+  }, 
 }
 </script>
 <style>
@@ -86,45 +66,6 @@ export default {
     padding-top: 30px;
     font-weight: 500;
     font-size: 28px;
-  }
-  .from{
-    width: 550px;
-    height: 600px;
-  }
-  .form h3{
-    color: #8a8888;
-    width: 190px;
-    height: 18px;
-    font-size: 19px;
-    font-weight: 500;
-    margin-bottom: 40px;
-  }
-  .form p{
-    width: 555px;
-    height: 35px;
-    color: #8a8888;
-    font-size: 15px;
-  }
-  .input-field {
-    width: 350px;
-    height: 45px;
-    border: 2px solid #8a8888;
-    box-sizing: border-box;
-    margin-bottom: 20px;
-  }
-  .input-text {
-    width: 560px;
-    height: 221px;
-    border: 2px solid #8a8888;
-    margin-bottom: 10px;
-  } 
-  .btn-contact {
-    width: 140px;
-    height: 40px;
-    font-weight: 600;
-    border: none;
-    background-color: rgb(45,204,114); 
-    color: white;
   }
   .contact{
     margin-left: 670px;
