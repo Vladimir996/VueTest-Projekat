@@ -3,7 +3,7 @@
          <div class="form-contact">
                     <h3>CONTACT FORM</h3>
                     <p>Proin pharetra volutpat quam, nec malesuada elit lobortis id. Curabitur mauris sem, scelerisque et sem et, auctor lobortis felis.</p>
-                            
+                        <form action v-if="showForm">   
                             <div class="input" :class="{ invalid: $v.name.$error }">
                             <input type="text" name="tekst" @blur="$v.name.$touch()" placeholder="Name" class="input-field" v-model="name" >
                             <p v-if="$v.name.$error">Import name!</p>
@@ -13,16 +13,15 @@
                                 <p v-if="$v.email.$error">Please valid email address!</p>
                             </div>
                             <input type="text" name="subject" placeholder="Subject" class="input-field">
-                             <br>
                              <div class="input" :class="{ invalid: $v.textarea.$error }">
                             <textarea class="input-text" rows="10" maxlength="500" @input="$v.textarea.$touch()" v-model="textarea" ></textarea>
                             <p id="text-area" v-if="$v.textarea.$error">Error!</p>
-                            </div>
-                            <br>
+                            </div>    
                             <div class="form-btns">
-                            <button type="button" name="send" class="btn-contact">SEND MESSAGE</button>
-                            <vue-recaptcha sitekey="6LdKW5UUAAAAAC6foMBDpclZplysFeqhSy5GldXT" @verify="onVerify"></vue-recaptcha>
+                            <button type="button" :disabled="$v.$invalid || !check" name="send"  v-on:click="sendMessages" class="btn-contact"  >SEND MESSAGE</button>
+                            <vue-recaptcha sitekey="6LdKW5UUAAAAAC6foMBDpclZplysFeqhSy5GldXT" @verify="onVerify()"></vue-recaptcha>
                             </div>
+                         </form>  
          </div>
     </div>
 </template>
@@ -35,10 +34,12 @@ export default {
     components: { VueRecaptcha },
     data() {
      return {
+         showForm: true,
          email: '',
          name: '',
-         textarea:''
-        
+         textarea:'',
+         VueRecaptcha: false,
+        check: false,
      }
     },
     validations: {
@@ -54,8 +55,18 @@ export default {
            maxLength: maxLength(10),
            minLength: minLength(3),
            required
-        }
+        },
     },
+    methods: {
+     sendMessages() {
+       this.showForm = false;
+       alert("Send messages");
+     },
+    onVerify() {
+      this.check = true;
+      console.log("sfdwjfbh");
+    }
+    }
 };
 </script>
 
@@ -108,9 +119,16 @@ export default {
     color: white;
     margin-bottom: 20px;
     margin-right: 120px;
+    cursor: pointer;
   }
   .form-btns{
       display: flex;
   }
-
+  .disable {
+    background-color: lightslategrey;
+    color: black;
+  }
+  button:disabled {
+    background-color: darkgrey !important;
+  }
 </style>

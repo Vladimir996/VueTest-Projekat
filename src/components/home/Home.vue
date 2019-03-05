@@ -200,11 +200,7 @@ export default {
   }
   .page {
     margin-left: 180px;
-  }
-  /* .carusel-img {
-    padding-right: 17px;
-  } */
-  
+  } 
   .project-detail {
     text-align: center;
     padding-bottom: 49px;
@@ -213,7 +209,6 @@ export default {
   }
   .project-detail p {
     margin-top: -50px;
-    /* padding-bottom: 70px; */
     font-size: 18px;
     font-weight: 700;
     color: #8f8d8d;
