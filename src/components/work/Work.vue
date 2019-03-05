@@ -50,13 +50,16 @@
                     <img src="src/assets/5.png"  alt="" class="img-work">
 
              </div>
-        </div>
+   </div>
 </template>
 <script>
 export default {
     data(){
         return{
-            activeClass: "grid"
+            activeClass: "grid",
+            photos: [
+		                ],
+	                   	selectedCategory: "All"
         }
     }
 }

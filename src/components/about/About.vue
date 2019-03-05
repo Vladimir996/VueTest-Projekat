@@ -10,16 +10,17 @@
       <p>
         Mauris ut malesuada ligula, non congue metus. Cras sit amet consectetur sapien. Fusce interdum
         nec erat sit amet posuere. Aenean fermentum nisl at nisl euismod, sit amet lobortis purus
-        consectetur. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
+        consectetur. Class rquent per conubia nostra, per inceptos
         himenaeos. Suspendisse ornare gravida turpis, eget egestas orci ornare sit amet. Quisque
         pellentesque, turpis efficitur euismod venenatis, est tortor tempus ante, sit amet ornare diam
         diam accumsan ligula.
         <br>
-        <br> Cras nec fermentum orci. Duis placerat nisi nibh, in suscipit quam porta sit amet. Vivamus
-        feugiat eros non vulputate tempus. Quisque non neque a dolor finibus posuere. Aenean nec mi sit
-        ametus massa sapien, interdum
+        <br> Cras nec fermentum orci.Porta sit amet. Vivamus
+        feugiat eros non neque a dolor finibus posuere. Aenean nec mi sit
+        ametus massa sapien, interdumros non neque a dolor finibus posuere. Aenean nec mi sit
+        ametus massa sapien, inter
         cursus purus sollicitudin non. Nam vel interdum nunc. Quisque imperdiet fermentum est, et
-        iaculis justo. Fusce eget risus nisi. Vivamus quis augue laoreet, imperdiet nisi id,
+        iaculis justo. Fusce ee laoreet, imperdiet nisi id,
       </p>
     </div>
     <div class="mission-statement">
@@ -109,20 +110,17 @@ export default {
   padding: 30px 0px;
 }
 .photo-about {
-  width: 382px;
+  width: 922px;
   height: 262px;
   margin-left: 480px;
   margin-top: 49px;
+  display: flex;
 }
 .photo-about p {
-  width: 521px;
-  height: 255px;
-  margin-left: 425px;
-  margin-top: -263px;
+  margin-left: 55px;
   color: #8a8888;
   font-size: 14px;
 }
-
 .mission-statement {
   width: 486px;
   height: 123px;
