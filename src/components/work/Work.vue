@@ -8,7 +8,7 @@
                 <div class="selection">
                         <ul>
                                 <li>
-                                    <a href=""  >ALL  / </a>
+                                    <a href="" @click="" >ALL  / </a>
                                 </li>
                                 <li>
                                     <a href="">PRINT  / </a>
@@ -50,18 +50,53 @@
                     <img src="src/assets/5.png"  alt="" class="img-work">
 
              </div>
+             <div class="projects">
+               <div class="filter">
+                  <label><input type="radio" v-model="selectedCategory" value="All" /> All</label>
+	              	<label><input type="radio" v-model="selectedCategory" value="Print" /> Print</label>
+	              	<label><input type="radio" v-model="selectedCategory" value="Phtotgraphy" /> Photography</label>
+              		<label><input type="radio" v-model="selectedCategory" value="Web" /> Web</label>
+                  <label><input type="radio" v-model="selectedCategory" value="Applications" /> Applications</label>
+               </div>
+               <ul class="projects-list">
+                 <li v-for="person in filteredCategory">{{ person.name }}</li>
+               </ul>
+             </div>
+      
    </div>
 </template>
 <script>
 export default {
+  el: "#projects",
     data(){
         return{
             activeClass: "grid",
-            photos: [
-		                ],
-	                   	selectedCategory: "All"
+            projects: [
+              { category: " Print", name: "Bill Gates" },
+              { category: " Print", name: "Bawdqwefwqefq" },
+              { category: " Print", name: "Bkoknjokjnoi" },
+              { category: " Web", name: "Bilwefvwecvs" },
+              { category: " Web", name: "efcwecvwev"  },
+              { category: " Web", name: "Biwefwevcwes"  },
+              { category: " Applications", name: "Bewfw3erv3wvs"  },
+              { category: " Applications", name: "ewf3wfvw"  },
+              { category: " Applications", name: "wfwevwevevs"  }
+            ],
+            selectedCategory: "All",
+    computed: {
+      filteredCategory: function() {
+        category = this.selectedCategory;
+        if(category === "All") {
+           return this.projects;
+        } else {
+          return this.projects.filter(function(person) {
+            return person.category === category;
+          });
         }
+      }
     }
+    }
+    },
 }
 </script>
 <style>
