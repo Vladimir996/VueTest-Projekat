@@ -15,7 +15,7 @@
                             <input type="text" name="subject" placeholder="Subject" class="input-field">
                              <div class="input" :class="{ invalid: $v.textarea.$error }">
                             <textarea class="input-text" rows="10" maxlength="500" @input="$v.textarea.$touch()" v-model="textarea" ></textarea>
-                            <p id="text-area" v-if="$v.textarea.$error">Error!</p>
+                            <p id="text-area" v-if="$v.textarea.$error"> Error 'You cannot use more than 200 characters</p>
                             </div>    
                             <div class="form-btns">
                             <button type="button" :disabled="$v.$invalid || !check" name="send"  v-on:click="sendMessages" class="btn-contact"  >SEND MESSAGE</button>
@@ -52,8 +52,8 @@ export default {
             name
         },
         textarea: {
-           maxLength: maxLength(10),
-           minLength: minLength(3),
+           maxLength: maxLength(200),
+          //  minLength: minLength(3),
            required
         },
     },

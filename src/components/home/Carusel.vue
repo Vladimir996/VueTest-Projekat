@@ -93,8 +93,6 @@ methods: {
 </script>
 <style>
 .slick-container {
-  /* margin-left: 380px;
-  margin-right: 350px; */
   width: 100%;
 }
 .slick-img {

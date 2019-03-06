@@ -5,99 +5,52 @@
                                   <h3 >CHECK OUT WHAT I CAN DO</h3>
                             </div>
                  </div>
-                <div class="selection">
-                        <ul>
-                                <li>
-                                    <a href="" @click="" >ALL  / </a>
-                                </li>
-                                <li>
-                                    <a href="">PRINT  / </a>
-                                </li>
-                                <li>
-                                    <a href="">PHOTOGRAPHY  / </a>
-                                </li>
-                                <li>
-                                    <a href="">WEB  / </a>
-                                </li>
-                                <li>
-                                    <a href="">APPLICATIONS</a>
-                                </li>
-                            </ul>
-                </div>
-              <div class="ghoto-gallery">
+               <div class="filter">
+                   <a  @click.prevent="selectedCategory ='all'" :class="{ activeClasss: selectedCategory == 'all' }" >All / </a>
+                   <a  @click.prevent="selectedCategory ='print'" :class="{ activeClasss: selectedCategory == 'print' }"> PRINT / </a>
+                   <a  @click.prevent="selectedCategory = 'photography'" :class="{ activeClasss: selectedCategory == 'photography' }"> PHOTOGRAPHY / </a>
+                   <a  @click.prevent="selectedCategory = 'web'" :class="{ activeClasss: selectedCategory == 'web' }" > WEB / </a>
+                   <a  @click.prevent="selectedCategory = 'applications'" :class="{ activeClasss: selectedCategory == 'applications' }" > APPLICATIONS </a>
+                  <div class="button-img">
                   <img src="src/assets/grid.png" @click="activeClass = 'grid'">
                   <img src="src/assets/list.png" @click="activeClass = 'list'">
-            </div>
-            <br>
-             <div :class="activeClass">
-                 
-                    <img src="src/assets/16.png"  alt="">
-               
-                    <img src="src/assets/1.png"  alt=""  class="img-work">
-                
-                    <img src="src/assets/23.png"  alt="" class="img-work">
-               
-                    <img src="src/assets/22.png"  alt="" class="img-work">
-                
-                    <img src="src/assets/24.png"  alt="" class="img-work">
-               
-                    <img src="src/assets/25.png"  alt="" class="img-work">
-        
-                    <img src="src/assets/20.png"  alt="" class="img-work">
-                
-                    <img src="src/assets/4.png"  alt="" class="img-work">
-                
-                    <img src="src/assets/5.png"  alt="" class="img-work">
-
-             </div>
-             <div class="projects">
-               <div class="filter">
-                  <label><input type="radio" v-model="selectedCategory" value="All" /> All</label>
-	              	<label><input type="radio" v-model="selectedCategory" value="Print" /> Print</label>
-	              	<label><input type="radio" v-model="selectedCategory" value="Phtotgraphy" /> Photography</label>
-              		<label><input type="radio" v-model="selectedCategory" value="Web" /> Web</label>
-                  <label><input type="radio" v-model="selectedCategory" value="Applications" /> Applications</label>
+                  </div>
                </div>
-               <ul class="projects-list">
-                 <li v-for="person in filteredCategory">{{ person.name }}</li>
-               </ul>
+             <div :class="activeClass">
+                    <img v-for="(project, index) in filteredCategory" :src="project.url" :key="index" class="img-work">
+                    <p id="no-result" v-if="filteredCategory.length == 0">No result.</p>
              </div>
-      
    </div>
 </template>
 <script>
 export default {
-  el: "#projects",
     data(){
         return{
             activeClass: "grid",
             projects: [
-              { category: " Print", name: "Bill Gates" },
-              { category: " Print", name: "Bawdqwefwqefq" },
-              { category: " Print", name: "Bkoknjokjnoi" },
-              { category: " Web", name: "Bilwefvwecvs" },
-              { category: " Web", name: "efcwecvwev"  },
-              { category: " Web", name: "Biwefwevcwes"  },
-              { category: " Applications", name: "Bewfw3erv3wvs"  },
-              { category: " Applications", name: "ewf3wfvw"  },
-              { category: " Applications", name: "wfwevwevevs"  }
+              { category: "print", name: "Bill Gates", description:"", url:"https://i.imgur.com/jAZHLmA.png" },
+              { category: "print", name: "Bawdqwefwqefq", url:"https://i.imgur.com/AiqsQjc.png" },
+              { category: "print", name: "Bkoknjokjnoi", url:"https://i.imgur.com/cOw5Mle.png" },
+              { category: "web", name: "Bilwefvwecvs", url:"https://i.imgur.com/vD0nQfo.png" },
+              { category: "web", name: "efcwecvwev", url:"https://i.imgur.com/v2KyPnW.png"  },
+              { category: "web", name: "Biwefwevcwes", url:"https://i.imgur.com/0jfhjJW.png"  },
+              { category: "applications", name: "Bewfw3erv3wvs", url:"https://i.imgur.com/gRe9Axs.png"  },
+              { category: "applications", name: "ewf3wfvw", url:"https://i.imgur.com/AVFJ6Lk.png"  },
+              { category: "applications", name: "wfwevwevevs", url:"https://i.imgur.com/CyAK5BN.png"  },
             ],
-            selectedCategory: "All",
+            selectedCategory: "all",
+         }
+    },
     computed: {
-      filteredCategory: function() {
-        category = this.selectedCategory;
-        if(category === "All") {
+      filteredCategory() {
+        if(this.selectedCategory === "all") {
            return this.projects;
         } else {
-          return this.projects.filter(function(person) {
-            return person.category === category;
-          });
+          return this.projects.filter(person => person.category == this.selectedCategory)
         }
       }
     }
-    }
-    },
-}
+};
 </script>
 <style>
 .check-work {
@@ -113,17 +66,30 @@ export default {
     font-size: 28px; 
     font-weight: 500;
   }
-  .selection ul{
+  .filter {
     display: flex;
     list-style-type: none;
     margin-left: 445px;
     margin-top: 50px;
-  }
-  .selection a {
+    margin-bottom: 20px;
     text-decoration: none;
     color: #a5a4a4;
     font-weight: 500;
+    font-size: 18px;
   }
+  .activeClasss {
+    color: #2ecc71 !important;
+  }
+  .filter a:hover {
+    color:#2ecc71 !important; 
+  }
+  .filter a {
+    cursor: pointer;
+  }
+ .button-img {
+   margin-left: 575px;
+   cursor: pointer;
+ }
   .ghoto-gallery {
     margin-left: 1385px;
     margin-top: -40px;
@@ -150,4 +116,11 @@ export default {
   .list img{
     padding: 10px 0;
   }
+  label [type='radio'] {
+   display: none;
+ }
+ #no-result {
+   font-size: 20px;
+   color: rgb(168, 165, 165);
+ }
 </style>
