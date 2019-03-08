@@ -46,11 +46,6 @@
             <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eu erat lacus, vel agittis ac, gravida quis tortor. .</p>
       </div>
        <Carusel/>
-      <div class="project-detail">
-             <p> <p> DARK UI KIT FREEBIE</p> <br>
-             Praesent ut ligula massa. Vivamus vel mi eget mauris tempor imperdiet. Quisque tempor, neque in venenatis consequat <br>, magna sapien 
-                    viverra ante, quis sagittis nulla urna nec mauris. Etiam vehicula.
-            </div>
       </div>
 </template>
 <script>
@@ -201,17 +196,4 @@ export default {
   .page {
     margin-left: 180px;
   } 
-  .project-detail {
-    text-align: center;
-    padding-bottom: 49px;
-    font-size: 13px;
-    color: #8c8a8a;
-  }
-  .project-detail p {
-    margin-top: -50px;
-    font-size: 18px;
-    font-weight: 700;
-    color: #8f8d8d;
-  }
-
 </style>

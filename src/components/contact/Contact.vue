@@ -8,7 +8,7 @@
              <div style="width: 100%"><iframe width="100%" height="485" src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=Romanovih%2033+(My%20Business%20Name)&amp;ie=UTF8&amp;t=&amp;z=15&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div><br />
              <div class="container">
                <div class="container-contact">
-               <Form/>
+               <ContactForm/>
                     <div class="heder-info">
                             <h4>CONTACT INFO</h4>
                             <p>Lorem ipsum dolor sit amet, consectetur elit. Cras <br> tortor neque,ante in,
@@ -40,10 +40,10 @@
          </div>
 </template>
 <script>
-import Form from "./Form.vue";
+import ContactForm from "./ContactForm.vue";
 export default {
  components: {
-    Form
+    ContactForm
   }, 
 }
 </script>

@@ -30,7 +30,7 @@
 import { required, email, minLength, maxLength } from 'vuelidate/lib/validators';
  import VueRecaptcha from 'vue-recaptcha';
 export default {
-    name: 'Form',
+    name: 'ContactForm',
     components: { VueRecaptcha },
     data() {
      return {
