@@ -37,9 +37,11 @@
   <button @click="prev" class="prev-button"><p> < </p></button>     
   <button @click="next" class="next-button"><p> > </p></button>  
      <div class="project-detail">
-             <p> <p> DARK UI KIT FREEBIE</p> <br>
-             Praesent ut ligula massa. Vivamus vel mi eget mauris tempor imperdiet. Quisque tempor, neque in venenatis consequat <br>, magna sapien 
-                    viverra ante, quis sagittis nulla urna nec mauris. Etiam vehicula.
+             <p></p>
+      <p>DARK UI KIT FREEBIE</p>
+      <br>Praesent ut ligula massa. Vivamus vel mi eget mauris tempor imperdiet. Quisque tempor, neque in venenatis consequat
+      <br>, magna sapien
+      viverra ante, quis sagittis nulla urna nec mauris. Etiam vehicula.
             </div>
     </div>
 </template>
