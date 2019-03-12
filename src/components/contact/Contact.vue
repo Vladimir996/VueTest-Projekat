@@ -65,6 +65,7 @@ export default {
     font-size: 28px;
   }
   .heder-info {
+    margin-top: -20px;
     margin-left: 130px;
   }
   .heder-info h4{
