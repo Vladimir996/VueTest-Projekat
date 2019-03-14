@@ -43,7 +43,9 @@
           Aliquam erat volutpat. Donec accumsan posuere augue, eu molestie ex blandit ut. Sed blandit
           convallis elit in tempor. Quisque dignissim consectetur hendrerit. Curabitur leo dolor,
           tristique ut gravida rutrum, consectetur eu diam.
+          <!-- {{ aboutText }} -->
         </p>
+        <!-- <button @click="changeText">Nesto</button> -->
       </div>
     </div>
     <div class="services">
@@ -98,7 +100,19 @@ export default {
         }
       ]
     };
-  }
+  },
+  // computed: {
+  //   aboutText() {
+  //     return this.$store.getters.getAbout;
+  //   }
+  // },
+  // methods: {
+  //   changeText() {
+  //     var a = 'raona'
+  //     this.$store.commit('changeText', a)
+      
+  //   }
+  // }
 };
 </script>
 <style>

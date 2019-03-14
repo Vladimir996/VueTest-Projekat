@@ -4,6 +4,7 @@ import App from './App.vue'
 import { routes } from './routes.js'
 import VModal from 'vue-js-modal'
 import Vuelidate from 'vuelidate'
+import { store } from './store/store'
 
 Vue.use(VueRouter);
 Vue.use(VModal);
@@ -16,6 +17,7 @@ const router = new VueRouter({
 new Vue({
   el: '#app',
   router,
+  store,
   render: h => h(App)
 })
 

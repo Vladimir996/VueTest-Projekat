@@ -214,17 +214,6 @@ export default {
 .next-button p {
   margin-top: -13px;
 }
-.project-detail {
-  text-align: center;
-  padding-bottom: 49px;
-  font-size: 13px;
-  color: #8c8a8a;
-}
-.project-detail p {
-  font-size: 18px;
-  font-weight: 700;
-  color: #8f8d8d;
-}
 .slick-container .slick-slide {
   margin: 0 10px;
 }
@@ -233,9 +222,11 @@ export default {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  color: #8f8d8d;
 }
 .ostali-samo-dugmici {
   margin-left: 600px;
   margin-top: -70px;
+  
 }
 </style>

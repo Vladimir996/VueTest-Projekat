@@ -28,7 +28,7 @@ export default {
         return{
             activeClass: "grid",
             projects: [
-              { category: "print", name: "Bill Gates", description:"", url:"https://i.imgur.com/jAZHLmA.png" },
+              { category: "print", name: "Bill Gates", description:"", url:"https://i.imgur.com/jAZHLmA.png"},
               { category: "print", name: "Bawdqwefwqefq", url:"https://i.imgur.com/AiqsQjc.png" },
               { category: "print", name: "Bkoknjokjnoi", url:"https://i.imgur.com/cOw5Mle.png" },
               { category: "web", name: "Bilwefvwecvs", url:"https://i.imgur.com/vD0nQfo.png" },
@@ -49,8 +49,19 @@ export default {
           return this.projects.filter(person => person.category == this.selectedCategory)
         }
       }
-    }
-};
+    //   workPhoto() {
+    //     return this.$store.getters.getWork;
+    //   }
+    // },
+    // methods: {
+    //   changeText() {
+    //   var a = 'raona'
+    //   this.$store.commit('changeText', a)
+      
+    // }
+    // }
+}
+}
 </script>
 <style>
 .check-work {
