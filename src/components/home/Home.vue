@@ -26,17 +26,9 @@
          </div>
        </modal>
       </div>
-        <div class="video-text"> 
-                <h4>GET TO KNOW US A LITTLE BETTER</h4>
-                <p> Praesent ut ligula massa. Vivamus vel mi eget mauris tempor imperdiet. Quisque tempor, neque in venenatis consequat, magna sapien 
-                    viverra ante, quis sagittis nulla urna nec mauris. Etiam vehicula justo mollis pretium sollicitudin.Vivamus vel mi eget mauris tempor imperdiet. Quisque tempor, neque in venenatis consequat, magna sapien 
-                    viverra ante, quis sagittis nulla urna nec mauris. 
-                <br> <br>
-               Nulla sodales malesuada neque, consequat eleifend odio commodo eget. Sed nulla arcu, dictum ac odio vel, rutrum dignissim quam. 
-               Vivamus vel mi eget maur, magna sapien 
-                    viverra ante, quis sagittis nulla urna nec mauris. 
-               Etiam ac facilisis eros, at eleifend mi.
-               </p>
+        <div class="video-text">
+                <h4>{{ homeInfo.popText.title }}</h4>         
+               <p>{{ homeInfo.popText.text }}</p>
         </div>
     </div>
       <div class="portfolio-projects">
@@ -63,7 +55,12 @@ export default {
     
     this.$modal.hide('video-popup');
   }
-}
+},
+computed: {
+    homeInfo() {
+      return this.$store.getters.homeInfo;
+    }
+  }
 };  
 </script>
 

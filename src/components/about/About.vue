@@ -2,54 +2,24 @@
   <div>
     <div class="page-title">
       <div class="container">
-        <h3>ABOUT MY BUSINESS</h3>
+        <h3>{{ aboutInfo.hederText.title }}</h3>
       </div>
     </div>
     <div class="photo-about">
       <img src="src/assets/about.png">
-      <p>
-        Mauris ut malesuada ligula, non congue metus. Cras sit amet consectetur sapien. Fusce interdum
-        nec erat sit amet posuere. Aenean fermentum nisl at nisl euismod, sit amet lobortis purus
-        consectetur. Class rquent per conubia nostra, per inceptos
-        himenaeos. Suspendisse ornare gravida turpis, eget egestas orci ornare sit amet. Quisque
-        pellentesque, turpis efficitur euismod venenatis, est tortor tempus ante, sit amet ornare diam
-        diam accumsan ligula.
-        <br>
-        <br> Cras nec fermentum orci.Porta sit amet. Vivamus
-        feugiat eros non neque a dolor finibus posuere. Aenean nec mi sit
-        ametus massa sapien, interdumros non neque a dolor finibus posuere. Aenean nec mi sit
-        ametus massa sapien, inter
-        cursus purus sollicitudin non. Nam vel interdum nunc. Quisque imperdiet fermentum est, et
-        iaculis justo. Fusce ee laoreet, imperdiet nisi id,
-      </p>
+      <p> {{ aboutInfo.paragraph }}</p>
     </div>
     <div class="mission-statement">
-      <h4>MISSION STATEMENT</h4>
-      <p>
-        Curabitur pretium tempus viverra. Maecenas tincidunt mollis arcu et pellentesque. Cras vitae
-        massa vitae nibh aliquam gravida. Integer elementum ultrices libero. Curabitur tincidunt
-        pretium nulla in condimentum. Suspendisse ornare augue id tincidunt hendrerit. Curabitur
-        accumsan mauris libero, bibendum tincidunt risus dictum ac. Vivamus at sollicitudin elit. Ut eu
-        eros pretium, pulvinar turpis id, ultricies nibh. Integer egestas enim vel placerat facilisis.
-        Phasellus eros purus, egestas eget tincidunt ac, ullamcorper id neque. Nam at nisi aliquam,
-        molestie ipsum non, semper augue.is.
-      </p>
+      <h4>{{ aboutInfo.mission.title }}</h4>
+      <p>{{ aboutInfo.mission.text }}</p>
+
       <div class="fun-facts">
-        <h4>FUN FACTS</h4>
-        <p>
-          Mauris blandit mi fringilla nisi laoreet gravida. Sed porttitor pulvinar mi, vel finibus augue
-          fermentum nec. Pellentesque augue sapien, maximus quis eros at, pharetra volutpat sem.
-          Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-          Aliquam erat volutpat. Donec accumsan posuere augue, eu molestie ex blandit ut. Sed blandit
-          convallis elit in tempor. Quisque dignissim consectetur hendrerit. Curabitur leo dolor,
-          tristique ut gravida rutrum, consectetur eu diam.
-          <!-- {{ aboutText }} -->
-        </p>
-        <!-- <button @click="changeText">Nesto</button> -->
+        <h4>{{ aboutInfo.fun.title }}</h4>
+        <p>{{ aboutInfo.fun.text }}</p>
       </div>
     </div>
     <div class="services">
-      <h4>SERVICES</h4>
+      <h4>{{ aboutInfo.services.title }}</h4>
     </div>
     <div class="panel">
       <div class="container panel-center">
@@ -101,18 +71,11 @@ export default {
       ]
     };
   },
-  // computed: {
-  //   aboutText() {
-  //     return this.$store.getters.getAbout;
-  //   }
-  // },
-  // methods: {
-  //   changeText() {
-  //     var a = 'raona'
-  //     this.$store.commit('changeText', a)
-      
-  //   }
-  // }
+  computed: {
+    aboutInfo() {
+      return this.$store.getters.aboutInfo;
+    }
+  }
 };
 </script>
 <style>

@@ -5,7 +5,10 @@
                         <h3>GOT A QUESTION OR INQUIRY?</h3>
                   </div>
              </div>
-             <div style="width: 100%"><iframe width="100%" height="485" src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=Romanovih%2033+(My%20Business%20Name)&amp;ie=UTF8&amp;t=&amp;z=15&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div><br />
+             <div class="maps">
+             <!-- <iframe src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=Romanovih%2033+(My%20Business%20Name)&amp;ie=UTF8&amp;t=&amp;z=15&amp;iwloc=B&amp;output=embed"></iframe> -->
+             <iframe :src="contactInfo.map" ></iframe>
+             </div>
              <div class="container">
                <div class="container-contact">
                <ContactForm/>
@@ -44,7 +47,12 @@ import ContactForm from "./ContactForm.vue";
 export default {
  components: {
     ContactForm
-  }, 
+  },
+  computed: {
+     contactInfo() {
+     return this.$store.getters.contactInfo;
+   }
+  },
 }
 </script>
 <style>
@@ -67,6 +75,10 @@ export default {
   .heder-info {
     margin-top: -20px;
     margin-left: 130px;
+  }
+  .maps iframe {
+    width: 100%;
+    height:485px;
   }
   .heder-info h4{
     width: 181px;

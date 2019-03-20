@@ -99,7 +99,7 @@ export default {
   cursor: pointer;
 }
 .button-img {
-  margin-left: 550px;
+  margin-left: 490px;
   cursor: pointer;
 }
 .ghoto-gallery {
