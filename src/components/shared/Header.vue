@@ -1,7 +1,7 @@
 <template>
         <header>
                 <div class="header">
-                     <img src="src/assets/logo.png" id="logo" alt="logo">
+                     <img id="logo" :src="logoHeader.url">
                     
                      <div class="media">
                      <a href="https://twitter.com/">
@@ -50,7 +50,11 @@
 </template>
 <script>
 export default {
-    
+    computed: {
+      logoHeader() {
+     return this.$store.getters.logoHeader;
+   }
+  } 
 }
 </script>
 

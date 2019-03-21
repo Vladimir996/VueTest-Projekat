@@ -2,12 +2,12 @@
     <div>
              <div class="question">
                   <div class="container">
-                        <h3>GOT A QUESTION OR INQUIRY?</h3>
+                        <h3>{{ contactInfo.textHeader.title }}</h3>
                   </div>
              </div>
              <div class="maps">
              <!-- <iframe src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=Romanovih%2033+(My%20Business%20Name)&amp;ie=UTF8&amp;t=&amp;z=15&amp;iwloc=B&amp;output=embed"></iframe> -->
-             <iframe :src="contactInfo.map" ></iframe>
+             <iframe :src="contactInfo.mapInfo.map" ></iframe>
              </div>
              <div class="container">
                <div class="container-contact">
@@ -58,6 +58,7 @@ export default {
 <style>
 .container-contact{
   display: flex;
+  margin-top: 30px;
 }
 .question {
     background-color: #2ecc71;

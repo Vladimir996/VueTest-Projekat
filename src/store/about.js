@@ -1,5 +1,6 @@
 const state = {
     aboutInfo: {
+        photoAbout:{ url:'https://i.imgur.com/wiImfAt.png' },
         hederText:{ title: 'ABOUT MY BUSINESS' },
         paragraph:`Mauris ut malesuada ligula, non congue metus. Cras sit amet consectetur sapien. Fusce interdum 
         nec erat sit amet posuere. Aenean fermentum nisl at nisl euismod, sit amet lobortis purusconsectetur. Class 
@@ -30,9 +31,24 @@ const state = {
         },
         services: {
             title: 'SERVICES'
-        }       
+        },
+        photoPanel1: {
+            url: 'https://i.imgur.com/Hw3r19k.png',
+            title: 'WEBSITES'
+        },
+        photoPanel2: {
+            url: 'https://i.imgur.com/ER6CPpp.png',
+            title: 'PHOTO'
+        },
+        photoPanel3: {
+            url: 'https://i.imgur.com/99EtUWF.png',
+            title: 'SEO'
+        },
+        photoPanel4: {
+            url: 'https://i.imgur.com/sKD1fif.png',
+            title: 'APPLICATIONS'
+        }
     }
-
 }
 const getters = {
     aboutInfo: state => {

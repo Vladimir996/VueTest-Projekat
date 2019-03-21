@@ -62,7 +62,7 @@ export default {
       return this.$store.getters.getProjects.filter(
         project => project.category === this.selectedCategory
       );
-    },
+    }
   }
 };
 </script>

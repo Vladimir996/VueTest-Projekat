@@ -1,11 +1,11 @@
 <template>
 <div class="footer">
              <div class="footer-block">
-                    <h4>ARE YOU READY TO BE BLOWN AWAY?</h4>
+                    <h4>{{ footerInfo.footerText.title }}</h4>
                     <router-link to="/about" exact><button type="button" name="" class="footer-btn">CLICK HERE TO FIND OUT</button></router-link>
           </div>
-            <div class="text-center">              
-                  <h6>COPYRIGHT 2013 DISPLAY, ALL RIGHTS RESERVED</h6>     
+            <div class="text-center">
+                  <h6>{{ footerInfo.footerText.text }}</h6>
                             <div class="footer-links">
                                 <ul>
                                  <li>
@@ -27,7 +27,11 @@
 </template>
 <script>
 export default {
-    
+    computed: {
+      footerInfo() {
+     return this.$store.getters.footerInfo;
+   }
+  } 
 }
 </script>
 
