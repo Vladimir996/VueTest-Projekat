@@ -47,6 +47,8 @@
 </template>
 
 <script>
+import db from '../../firebase/init'
+
 export default {
   data() {
     return {
@@ -63,6 +65,16 @@ export default {
         project => project.category === this.selectedCategory
       );
     }
+  },
+  created() {
+    db.collection('work').get()
+    .then(snapshot => {
+      const projects = []
+      snapshot.forEach(doc => {
+        projects.push(doc.data())
+      })
+    this.$store.commit('setProjects', projects)
+    })
   }
 };
 </script>

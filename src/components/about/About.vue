@@ -2,41 +2,41 @@
   <div>
     <div class="page-title">
       <div class="container">
-        <h3>{{ aboutInfo.hederText.title }}</h3>
+        <h3>{{ aboutInfo[0].hederText }}</h3>
       </div>
     </div>
     <div class="photo-about">
-      <img :src="aboutInfo.photoAbout.url">
-      <p> {{ aboutInfo.paragraph }}</p>
+      <img :src="aboutInfo[0].photoAbout">
+      <p>{{ aboutInfo[0].paragraph }}</p>
     </div>
     <div class="mission-statement">
-      <h4>{{ aboutInfo.mission.title }}</h4>
-      <p>{{ aboutInfo.mission.text }}</p>
+      <h4>{{ aboutInfo[0].missionTitle }}</h4>
+      <p>{{ aboutInfo[0].missionText }}</p>
       <div class="fun-facts">
-        <h4>{{ aboutInfo.fun.title }}</h4>
-        <p>{{ aboutInfo.fun.text }}</p>
+        <h4>{{ aboutInfo[0].funTitle }}</h4>
+        <p>{{ aboutInfo[0].funText }}</p>
       </div>
     </div>
     <div class="services">
-      <h4>{{ aboutInfo.services.title }}</h4>
+      <h4>{{ aboutInfo[0].services }}</h4>
     </div>
     <div class="panel">
       <div class="container panel-center">
         <div @click="currentTab = 0" :class="{ activeTab: currentTab === 0 }">
-          <img :src="aboutInfo.photoPanel1.url" class="photos">
-          <h4 id="websites">{{ aboutInfo.photoPanel1.title }}</h4>
+          <img :src="aboutInfo[0].webPanelurl" class="photos">
+          <h4 id="websites">{{ aboutInfo[0].webPaneltitle }}</h4>
         </div>
         <div @click="currentTab = 1" :class="{ activeTab: currentTab === 1 }">
-          <img :src="aboutInfo.photoPanel2.url" class="photos">
-          <h4 id="photography">{{ aboutInfo.photoPanel2.title }}</h4>
+          <img :src="aboutInfo[0].photoPanelurl" class="photos">
+          <h4 id="photography">{{ aboutInfo[0].photoPaneltitle }}</h4>
         </div>
         <div @click="currentTab = 2" :class="{ activeTab: currentTab === 2 }">
-          <img :src="aboutInfo.photoPanel3.url" class="photos">
-          <h4 id="seo">{{ aboutInfo.photoPanel3.title }}</h4>
+          <img :src="aboutInfo[0].seoPanelurl" class="photos">
+          <h4 id="seo">{{ aboutInfo[0].seoPaneltitle }}</h4>
         </div>
         <div @click="currentTab = 3" :class="{ activeTab: currentTab === 3 }">
-          <img :src="aboutInfo.photoPanel4.url" class="photos">
-          <h4 id="applications">{{ aboutInfo.photoPanel4.title }}</h4>
+          <img :src="aboutInfo[0].appPanelurl" class="photos">
+          <h4 id="applications">{{ aboutInfo[0].appPaneltitle }}</h4>
         </div>
       </div>
       <div class="about-services">
@@ -46,6 +46,8 @@
   </div>
 </template>
 <script>
+import db from '../../firebase/init'
+
 export default {
   data() {
     return {
@@ -74,7 +76,18 @@ export default {
     aboutInfo() {
       return this.$store.getters.aboutInfo;
     }
-  }
+  },
+    created() {
+      db.collection('about').get()
+      .then(snapshot => {
+        const aboutInfo = []
+          snapshot.forEach(doc => {
+              aboutInfo.push(doc.data())
+            })
+            console.log(aboutInfo)
+          this.$store.commit('setAboutInfo', aboutInfo)
+      })
+}
 };
 </script>
 <style>
