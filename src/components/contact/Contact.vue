@@ -2,12 +2,11 @@
     <div>
              <div class="question">
                   <div class="container">
-                        <h3>{{ contactInfo.textHeader.title }}</h3>
+                        <h3 v-if="contactInfo">{{ contactInfo[0].contactTitle }}</h3>
                   </div>
              </div>
              <div class="maps">
-             <!-- <iframe src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=Romanovih%2033+(My%20Business%20Name)&amp;ie=UTF8&amp;t=&amp;z=15&amp;iwloc=B&amp;output=embed"></iframe> -->
-             <iframe :src="contactInfo.mapInfo.map" ></iframe>
+             <iframe :src="contactInfo[0].map"></iframe>
              </div>
              <div class="container">
                <div class="container-contact">
@@ -16,8 +15,10 @@
                             <h4>CONTACT INFO</h4>
                             <p>Lorem ipsum dolor sit amet, consectetur elit. Cras <br> tortor neque,ante in,
                                 bibendum ornare orci.</p>
-                            <b>email:</b><span id="display-info">info@display.com</span><br>
-                            <b>phone:</b><span>1.306.222.4545</span><br> <br>
+                            <b>email:</b>
+                            <span id="display-info">info@display.com</span>
+                            <br>
+                            <b>phone:</b><span>1.306.222.4545</span><br><br>
                             <p>
                                 222 2nd Ave South
                                 <br>
@@ -37,12 +38,14 @@
                                     <p>9am - 5pm</p>
                                     <p>Closed</p>
                             </div>
+                            </div>
+
                 </div>
-               </div>
-             </div> 
-         </div>
+      </div>
+</div> 
 </template>
 <script>
+import db from '../../firebase/init'
 import ContactForm from "./ContactForm.vue";
 export default {
  components: {
@@ -53,6 +56,17 @@ export default {
      return this.$store.getters.contactInfo;
    }
   },
+    created() {
+      db.collection('contact').get()
+      .then(snapshot => {
+        const contactInfo = []
+          snapshot.forEach(doc => {
+              contactInfo.push(doc.data())
+            })
+            console.log(contactInfo)
+          this.$store.commit('setContactInfo', contactInfo)
+      })
+}
 }
 </script>
 <style>

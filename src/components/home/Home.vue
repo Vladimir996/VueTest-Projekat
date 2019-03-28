@@ -1,12 +1,12 @@
 <template>
   <div class="homeContainer">
     <div class="background img-animationRL">
-      <img :src="homeInfo.homePhoto.url">
+      <img :src="homeInfo[0].homePhoto">
     </div>
     <p class="home-text">
-      {{ homeInfo.portfolioText.text }}
+      {{ homeInfo[0].portfolioText }}
       <br>
-      {{ homeInfo.portfolioText.title }}
+      {{ homeInfo[0].portfolioTitle }}
     </p>
     <div class="button-portfolio">
       <router-link to="/work" exact>
@@ -15,9 +15,9 @@
     </div>
     <div class="background-video">
       <div class="video-media">
-        <img class="slikaYou" @click="show" :src="homeInfo.imagePop.url">
+        <img class="slikaYou" @click="show" :src="homeInfo[0].imagePopup">
         <modal name="video-popup">
-          <iframe id="video-popup" :src="homeInfo.popText.url"></iframe>
+          <iframe id="video-popup" :src="homeInfo[0].popupUrl"></iframe>
           <div class="dugmence" @click="hide">
             <p>C</p>
             <p>L</p>
@@ -28,21 +28,22 @@
         </modal>
       </div>
       <div class="video-text">
-        <h4>{{ homeInfo.popText.title }}</h4>
-        <p>{{ homeInfo.popText.text }}</p>
+        <h4>{{ homeInfo[0].popupTitle}}</h4>
+        <p>{{ homeInfo[0].popupText}}</p>
       </div>
     </div>
     <div class="portfolio-projects">
-      <p>{{ homeInfo.featuredText.title }}</p>
+      <p>{{ homeInfo[0].featuredTextTitle }}</p>
     </div>
     <div class="portfolio-text">
-      <p class="text-center">{{ homeInfo.featuredText.text }}</p>
+      <p class="text-center">{{ homeInfo[0].featuredText }}</p>
     </div>
     <Carusel/>
   </div>
 </template>
 <script>
 import Carusel from "./Carusel.vue";
+import db from '../../firebase/init'
 export default {
   components: {
     Carusel
@@ -59,7 +60,18 @@ export default {
     homeInfo() {
       return this.$store.getters.homeInfo;
     }
-  }
+  },
+    created() {
+      db.collection('home').get()
+      .then(snapshot => {
+        const homeInfo = []
+          snapshot.forEach(doc => {
+             homeInfo.push(doc.data())
+            })
+            console.log(homeInfo)
+          this.$store.commit('sethomeInfo', homeInfo)
+      })
+}
 };
 </script>
 
@@ -121,7 +133,7 @@ export default {
   width: 100%;
   text-align: center;
   text-decoration: none;
-  padding-top: 10px;
+  margin: 0 auto;
 }
 .button-portfolio button {
   background-color: rgb(45, 204, 114);

@@ -2,114 +2,78 @@
   <div>
     <Slick class="slick-container" ref="slick" :options="slickOptions">
       <div>
-        <img class="slick-img" src="../../assets/5.png">
+        <!-- <img class="slick-img" src="../../assets/5.png"> -->
+        <img class="slick-img" :src="homeInfo[0].caruselPhoto1">
       </div>
       <div>
-        <img class="slick-img" src="../../assets/1.png">
+        <img class="slick-img" :src="homeInfo[0].caruselPhoto2">
       </div>
       <div>
-        <img class="slick-img" src="../../assets/23.png">
+         <img class="slick-img" :src="homeInfo[0].caruselPhoto3">
       </div>
       <div>
-        <img class="slick-img" src="../../assets/25.png">
+        <img class="slick-img" :src="homeInfo[0].caruselPhoto4">
       </div>
       <div>
-        <img class="slick-img" src="../../assets/24.png">
+        <img class="slick-img" :src="homeInfo[0].caruselPhoto5">
       </div>
       <div>
-        <img class="slick-img" src="../../assets/5.png">
+        <img class="slick-img" :src="homeInfo[0].caruselPhoto6">
       </div>
       <div>
-        <img class="slick-img" src="../../assets/1.png">
+        <img class="slick-img" :src="homeInfo[0].caruselPhoto7">
       </div>
       <div>
-        <img class="slick-img" src="../../assets/23.png">
+        <img class="slick-img" :src="homeInfo[0].caruselPhoto8">
       </div>
       <div>
-        <img class="slick-img" src="../../assets/25.png">
+        <img class="slick-img" :src="homeInfo[0].caruselPhoto9">
       </div>
       <div>
-        <img class="slick-img" src="../../assets/24.png">
+        <img class="slick-img" :src="homeInfo[0].caruselPhoto5">
       </div>
     </Slick>
     <div class="carousel-text">
       <slick id="slick2" ref="slick" class="slick-paragraph" :options="slickOptions2">
         <div>
-          <h4>DARK UI FREEBIE</h4>
-          <p>
-            But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was
-            born
-          </p>
+          <h4>{{ homeInfo[0].caruselTitle1 }}</h4>
+         <p>{{ homeInfo[0].caruselText1 }}</p>
         </div>
         <div>
-          <h4>DEFENESTRATION</h4>
-          <p>
-            Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is
-            pain
-          </p>
+          <h4>{{ homeInfo[0].caruselTitle2 }}</h4>
+          <p>{{ homeInfo[0].caruselText2 }}</p>
         </div>
         <div>
-          <h4>FANGED NOUMENA</h4>
-          <p>
-            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
-            deleniti
-            atque
-          </p>
-        </div>
-
-        <div>
-          <h4>SCHOPENHAUER</h4>
-          <p>
-            Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est
-            eligendi
-            optio cumque nihil
-          </p>
-        </div>
-
-        <div>
-          <h4>ENCHIRIDION</h4>
-          <p>
-            On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and
-            demoralized
-          </p>
+          <h4>{{ homeInfo[0].caruselTitle3 }}</h4>
+          <p>{{ homeInfo[0].caruselText3 }}</p>
         </div>
         <div>
-          <h4>DARK UI FREEBIE</h4>
-          <p>
-            But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was
-            born
-          </p>
+          <h4>{{ homeInfo[0].caruselTitle4 }}</h4>
+         <p>{{ homeInfo[0].caruselText4 }}</p>
         </div>
         <div>
-          <h4>DEFENESTRATION</h4>
-          <p>
-            Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is
-            pain
-          </p>
+          <h4>{{ homeInfo[0].caruselTitle5 }}</h4>
+        <p>{{ homeInfo[0].caruselText5 }}</p>
         </div>
         <div>
-          <h4>FANGED NOUMENA</h4>
-          <p>
-            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
-            deleniti
-            atque
-          </p>
-        </div>
-
-        <div>
-          <h4>SCHOPENHAUER</h4>
-          <p>
-            Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est
-            eligendi
-            optio cumque nihil
-          </p>
+          <h4>{{ homeInfo[0].caruselTitle6 }}</h4>
+          <p>{{ homeInfo[0].caruselText6 }}</p>
         </div>
         <div>
-          <h4>ENCHIRIDION</h4>
-          <p>
-            On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and
-            demoralized
-          </p>
+          <h4>{{ homeInfo[0].caruselTitle7 }}</h4>
+        <p>{{ homeInfo[0].caruselText7 }}</p>
+        </div>
+        <div>
+          <h4>{{ homeInfo[0].caruselTitle8 }}</h4>
+           <p>{{ homeInfo[0].caruselText8 }}</p>
+        </div>
+        <div>
+          <h4>{{ homeInfo[0].caruselTitle9 }}</h4>
+           <p>{{ homeInfo[0].caruselText9 }}</p>
+        </div>
+        <div>
+          <h4>{{ homeInfo[0].caruselTitle10 }}</h4>
+          <p>{{ homeInfo[0].caruselText10 }}</p>
         </div>
       </slick>
     </div>
@@ -124,6 +88,7 @@
   </div>
 </template>
 <script>
+import db from '../../firebase/init'
 import Slick from "vue-slick";
 export default {
   name: "Carusel",
@@ -163,56 +128,66 @@ export default {
         this.$refs.slick.reSlick();
       });
     }
-  }
+  },
+  computed: {
+    homeInfo() {
+      return this.$store.getters.homeInfo;
+    }
+  },
+   created() {
+      db.collection('home').get()
+      .then(snapshot => {
+        const homeInfo = []
+          snapshot.forEach(doc => {
+             homeInfo.push(doc.data())
+            })
+            console.log(homeInfo)
+          this.$store.commit('sethomeInfo', homeInfo)
+      })
+}
 };
 </script>
 <style>
 .slick-container {
   width: 100%;
 }
-.slick-img {
-  width: 290px !important;
-  height: 222px;
-}
-.filtering {
-  height: 300px;
-}
 .prev-button {
-  width: 40px;
-  height: 40px;
-  margin-top: -150px;
   font-weight: bold;
-  font-size: 40px;
-  background-color: darkgrey;
-  color: white;
+  font-size: 90px;
+  border: none;
+  color: darkgrey;
+  background-color: white;
+  cursor: pointer;
 }
 .prev-button:focus {
   outline: none;
 }
 .prev-button:hover {
-  color: greenyellow;
+  color: #28a745;
 }
 .prev-button p {
-  margin-top: -13px;
+  margin-top: -38px;
+  margin-left: -5px;
 }
 .next-button {
-  width: 40px;
-  height: 40px;
-  margin-left: 630px;
+  margin-left: 606px;
   font-weight: bold;
   font-weight: 900;
-  font-size: 40px;
-  background-color: darkgrey;
-  color: white;
+  font-size: 90px;
+  border: none;
+  color: darkgrey;
+  background-color: white;
+  cursor: pointer;
 }
 .next-button:focus {
   outline: none;
 }
 .next-button:hover {
-  color: greenyellow;
+  color: #28a745;
 }
 .next-button p {
-  margin-top: -13px;
+  margin-top: -38px;
+  margin-left: -5px;
 }
 .slick-container .slick-slide {
   margin: 0 10px;
@@ -227,6 +202,5 @@ export default {
 .ostali-samo-dugmici {
   margin-left: 600px;
   margin-top: -70px;
-  
 }
 </style>

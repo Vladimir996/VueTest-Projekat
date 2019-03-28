@@ -1,23 +1,25 @@
 <template>
-  <div>
+  <div >
     <div class="page-title">
       <div class="container">
-        <h3>{{ aboutInfo[0].hederText }}</h3>
+        <h3 v-if="aboutInfo">{{ aboutInfo[0].hederText }}</h3>
       </div>
     </div>
-    <div class="photo-about">
-      <img :src="aboutInfo[0].photoAbout">
+    <div class="container main-about" >
+      <img  class="float-left"  :src="aboutInfo[0].photoAbout">
       <p>{{ aboutInfo[0].paragraph }}</p>
     </div>
-    <div class="mission-statement">
+    <div class="mission-statement container">
+      <div>
       <h4>{{ aboutInfo[0].missionTitle }}</h4>
       <p>{{ aboutInfo[0].missionText }}</p>
+      </div>
       <div class="fun-facts">
         <h4>{{ aboutInfo[0].funTitle }}</h4>
         <p>{{ aboutInfo[0].funText }}</p>
       </div>
     </div>
-    <div class="services">
+    <div class="services container">
       <h4>{{ aboutInfo[0].services }}</h4>
     </div>
     <div class="panel">
@@ -84,13 +86,21 @@ export default {
           snapshot.forEach(doc => {
               aboutInfo.push(doc.data())
             })
-            console.log(aboutInfo)
           this.$store.commit('setAboutInfo', aboutInfo)
       })
 }
 };
 </script>
 <style>
+.main-about {
+  overflow: hidden;
+  margin-top: 20px;
+}
+.main-about p {
+  color: #8a8888;
+  font-size: 14px;
+  margin-left: 410px;
+}
 .page-title {
   background-color: #2ecc71;
 }
@@ -99,54 +109,35 @@ export default {
   padding: 30px 0px;
 }
 .photo-about {
-  width: 922px;
-  height: 262px;
-  margin-left: 480px;
-  margin-top: 49px;
+ 
   display: flex;
 }
-.photo-about p {
-  margin-left: 55px;
-  color: #8a8888;
-  font-size: 14px;
-}
 .mission-statement {
-  width: 486px;
-  height: 123px;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
   color: #8a8888;
-  margin-left: 480px;
-  margin-top: 49px;
-  padding-bottom: 89px;
+  margin-top: 19px;
   font-size: 14px;
+  clear: left;
 }
 .mission-statement h4 {
   font-size: 19px;
   font-weight: 500;
 }
-.fun-facts {
-  width: 436px;
-  height: 123px;
-  margin-left: 500px;
-  margin-top: -215px;
-  font-size: 14px;
-}
 .fun-facts h4 {
   font-size: 19px;
   font-weight: 500;
+  margin-left: 15px;
 }
-.services {
-  width: 117px;
-  height: 18px;
-  margin-left: 480px;
-  margin-bottom: 20px;
-  color: #8a8888;
-  padding-bottom: 15px;
+.fun-facts p {
+  margin-left: 15px;
 }
 .services h4 {
+  margin-bottom: 25px;
   font-size: 19px;
   font-weight: 500;
-  margin-top: 120px;
   text-decoration: 0 none;
+    color: #8a8888;
 }
 .panel {
   text-align: center;
@@ -163,7 +154,6 @@ export default {
   color: #423e3e;
   margin-top: 20px;
 }
-
 .photos {
   margin-top: 47px;
 }

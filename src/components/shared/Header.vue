@@ -1,108 +1,79 @@
 <template>
-        <header>
-                <div class="header">
-                     <img id="logo" :src="logoHeader.url">
-                    
-                     <div class="media">
-                     <a href="https://twitter.com/">
-                         <img src="src/assets/twitter.png" alt="twitter">
-                     </a>
-         
-                     <a href="https://www.facebook.com/">
-                         <img src="src/assets/facebook.png" alt="facebook">
-                     </a>
-         
-                     <a href="https://rss.com/">
-                         <img src="src/assets/rss.png" alt="rss">
-                     </a>
-
-                     <a href="https://www.pinterest.com/">
-                         <img src="src/assets/pinterest.png" alt="pinterest">
-                     </a>
-
-                     <a href="https://plus.google.com/">
-                         <img src="src/assets/google-plus.png" alt="google-plus">
-                     </a>
-
-                     <a href="https://dribbble.com/">
-                         <img src="src/assets/dribbble.png" alt="dribbble">
-                     </a>
-                 </div>
-                 <div id="line"></div>
-                 <div class="links">
-                         <ul class="link-list">
-                                 <li>
-                                     <router-link to="/" exact>HOME</router-link>
-                                 </li>
-                                 <li>
-                                     <router-link to="/about" exact>ABOUT</router-link>
-                                 </li>
-                                 <li>
-                                     <router-link to="/work" exact>WORK</router-link>
-                                 </li>
-                                 <li>
-                                    <router-link to="/contact" exact>CONTACT</router-link>
-                                 </li>
-                             </ul>
-                 </div>
-                </div>
-             </header>
+  <header>
+    <div class="header container">
+      <img id="logo" :src="headerInfo[0].logoUrl">
+      <div class="media">
+        <a v-for="(socialIcon, index) in socialIcons" :key="index" :href="socialIcon.url">
+          <img :src="socialIcon.imgUrl">
+        </a>
+      </div>
+      <div id="line"></div>
+<nav class="navbar navbar-expand-lg navbar-light container">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav link-list">
+      <li class="nav-item active">
+        <router-link to="/" exact>HOME</router-link>
+      </li>
+      <li class="nav-item">
+        <router-link to="/about" exact>ABOUT</router-link>
+      </li>
+      <li class="nav-item">
+       <router-link to="/work" exact>WORK</router-link>
+      </li>
+      <li class="nav-item">
+       <router-link to="/contact" exact>CONTACT</router-link>
+      </li>
+    </ul>
+  </div>
+</nav>
+    </div>
+  </header>
 </template>
 <script>
+import db from "../../firebase/init";
 export default {
-    computed: {
-      logoHeader() {
-     return this.$store.getters.logoHeader;
-   }
-  } 
-}
+  computed: {
+    headerInfo() {
+      return this.$store.getters.headerInfo;
+    },
+    socialIcons() {
+      return this.$store.getters.socialIcons;
+    }
+  },
+  created() {
+    db.collection("social-links").onSnapshot(snapshot => {
+      const socialIcons = [];
+      snapshot.docs.forEach(doc => {
+        socialIcons.push(doc.data());
+      });
+      this.$store.commit("setSocialIcons", socialIcons);
+      console.log(this.socialIcons);
+    });
+    db.collection("logo")
+      .get()
+      .then(snapshot => {
+        const headerInfo = [];
+        snapshot.forEach(doc => {
+          headerInfo.push(doc.data());
+        });
+        this.$store.commit("setHeaderInfo", headerInfo);
+      });
+  }
+};
 </script>
 
-<style>
-.header{
-    margin: 0 auto;
-    width: 940px;
-    height: 183px;
-}
-#logo {
-    margin-top: 30px;
-    display: inline;
-  }
-  #line {
-    display: block;
-    width: 100%;
-    height: 1px;
-    margin: 30px auto auto auto;
-    padding: 0;
-    background-color: #dadada;
-    margin-top: 30px;
-  }
+<style scoped>
+  /* @media(max-width: 990px) {
+    .media{
+    margin-left: 400px;
+    }
+  } */
+  @media(max-width: 770px) {
   .media {
-    display: inline;
-    margin-bottom: 30px;
-    margin-left: 561px;
-    margin-top: 46px;
+    margin-left: 35px;
   }
-  .link-list {
-    list-style-type: none;
-    margin-left: 0;
-    padding-left: 0;
-    margin-top: 30px;
-    font-weight: 500;
-    padding-bottom: 0;
-    margin-bottom: 28px;
-    color: #dadada;
-  }
-  .link-list a{
-    text-decoration:none;
-    color:#7f7f7f; 
-    text-decoration: none;
-    color:#737373; 
-    font-size: 17px;
-}
-.link-list li {
-  display: inline;
-  margin-right: 38px;
-  text-decoration: none;
 }
 </style>
